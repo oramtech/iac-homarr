@@ -4,6 +4,11 @@ terraform {
       source  = "kreuzwerker/docker"
       version = "2.24.0"
     }
+
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 3.0"
+    }
   }
 
   cloud {
@@ -13,6 +18,10 @@ terraform {
       name = "iac-homarr"
     }
   }
+}
+
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
 }
 
 provider "docker" {
